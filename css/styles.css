@@ -568,6 +568,16 @@ a {
     .contact {
         padding: 100px 0;
     }
+
+    .contact-social {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-social a {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 640px) {
@@ -605,16 +615,6 @@ a {
 
     .btn {
         padding: 14px 28px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .contact-social {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .contact-social a {
         width: 100%;
         justify-content: center;
     }
