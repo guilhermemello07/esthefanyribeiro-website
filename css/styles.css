@@ -486,20 +486,30 @@ a {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: 80px;
     border: 1px solid var(--color-border);
     color: var(--color-text-light);
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0.03em;
-    transition: all 0.3s ease;
+    transition: all 0.4s var(--ease-out);
+}
+
+.contact-social a svg {
+    flex-shrink: 0;
+    display: block;
+}
+
+.contact-social a span {
+    line-height: 1;
 }
 
 .contact-social a:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(184, 134, 11, 0.15);
 }
 
 /* ---- Footer ---- */
