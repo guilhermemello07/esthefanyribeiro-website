@@ -609,4 +609,14 @@ a {
         justify-content: center;
     }
 
+    .contact-social {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-social a {
+        width: 100%;
+        justify-content: center;
+    }
+
 }
