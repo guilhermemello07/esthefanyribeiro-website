@@ -322,9 +322,27 @@ a {
     margin-bottom: 40px;
 }
 
+.book-format {
+    margin-bottom: 32px;
+}
+
+.book-format:last-child {
+    margin-bottom: 0;
+}
+
+.format-title {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: 14px;
+}
+
 .book-actions {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
