@@ -356,6 +356,19 @@ a {
     box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2);
 }
 
+.btn-secondary {
+    background: transparent;
+    color: var(--color-dark);
+    border: 1px solid var(--color-dark);
+}
+
+.btn-secondary:hover {
+    background: var(--color-dark);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2);
+}
+
 /* ---- Author Section ---- */
 
 .author {
