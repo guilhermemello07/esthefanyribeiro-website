@@ -478,8 +478,8 @@ a {
 
 .contact-social {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 16px;
 }
 
@@ -570,15 +570,6 @@ a {
         padding: 100px 0;
     }
 
-    .contact-social {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .contact-social a {
-        width: 100%;
-        justify-content: center;
-    }
 }
 
 @media (max-width: 640px) {
