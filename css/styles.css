@@ -319,7 +319,11 @@ a {
     font-weight: 300;
     line-height: 1.8;
     color: var(--color-text-light);
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+}
+
+.book-description:last-of-type {
+    margin-bottom: 36px;
 }
 
 .book-format {
@@ -452,43 +456,19 @@ a {
 }
 
 .contact-content {
-    max-width: 560px;
+    max-width: 600px;
     margin: 0 auto;
-}
-
-.contact-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--color-dark);
-    margin-bottom: 24px;
-}
-
-.contact-divider {
-    width: 50px;
-    height: 1px;
-    background: var(--color-accent);
-    margin: 0 auto 24px;
-}
-
-.contact-text {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--color-text-light);
-    margin-bottom: 32px;
 }
 
 .contact-email {
     display: inline-block;
     font-family: var(--font-serif);
-    font-size: 1.3rem;
+    font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 400;
     color: var(--color-dark);
     border-bottom: 1px solid var(--color-accent);
-    padding-bottom: 4px;
-    margin-bottom: 40px;
+    padding-bottom: 6px;
+    margin-bottom: 56px;
     transition: color 0.3s ease;
 }
 
@@ -499,25 +479,28 @@ a {
 .contact-social {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 16px;
 }
 
-.contact-social a {
+.social-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    gap: 10px;
+    padding: 14px 28px;
     border: 1px solid var(--color-border);
+    border-radius: 80px;
     color: var(--color-text-light);
-    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: all 0.35s var(--ease-out);
 }
 
-.contact-social a:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+.social-link:hover {
+    border-color: var(--color-dark);
+    color: var(--color-dark);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 26, 46, 0.08);
 }
 
 /* ---- Footer ---- */
@@ -613,6 +596,16 @@ a {
 
     .btn {
         padding: 14px 28px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-social {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-link {
         width: 100%;
         justify-content: center;
     }
