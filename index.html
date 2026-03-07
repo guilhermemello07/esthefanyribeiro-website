@@ -1,13 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esthefany Ribeiro</title>
+    <title>Esthefany Ribeiro — Escritora</title>
+    <meta name="description" content="Esthefany Ribeiro — Escritora e autora de Adaptando-se ao Novo, um guia pessoal para imigrantes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Coming Soon</h1>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Esthefany Ribeiro</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#livro">O Livro</a></li>
+                <li><a href="#autora">A Autora</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <p class="hero-subtitle reveal">Escritora</p>
+            <h1 class="hero-title reveal">Esthefany<br>Ribeiro</h1>
+            <div class="hero-line reveal"></div>
+            <p class="hero-tagline reveal">Transformando vivências em palavras<br>que acolhem e inspiram.</p>
+            <a href="#livro" class="hero-cta reveal">Conheça o novo livro</a>
+        </div>
+    </section>
+
+    <!-- Book -->
+    <section class="book" id="livro">
+        <div class="container">
+            <div class="book-grid">
+                <div class="book-cover reveal">
+                    <img src="assets/images/capa.png" alt="Capa do livro Adaptando-se ao Novo por Esthefany Ribeiro">
+                </div>
+                <div class="book-info">
+                    <p class="section-label reveal">Novo Lançamento</p>
+                    <h2 class="book-title reveal">Adaptando-se<br>ao Novo</h2>
+                    <p class="book-subtitle reveal">Um guia pessoal para imigrantes</p>
+                    <div class="book-divider reveal"></div>
+                    <p class="book-description reveal">
+                        Mais do que um livro, é um abraço em forma de palavras para todos que
+                        tiveram a coragem de recomeçar em um novo país. Esthefany compartilha
+                        sua jornada pessoal e oferece um guia acolhedor para quem vive os
+                        desafios e as belezas da imigração.
+                    </p>
+                    <div class="book-actions reveal">
+                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                            Comprar na Amazon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author -->
+    <section class="author" id="autora">
+        <div class="container">
+            <div class="author-grid">
+                <div class="author-info">
+                    <p class="section-label reveal">Sobre</p>
+                    <h2 class="author-title reveal">A Autora</h2>
+                    <div class="author-divider reveal"></div>
+                    <p class="author-bio reveal">
+                        Esthefany Ribeiro é brasileira, escritora e imigrante. Com sensibilidade
+                        e autenticidade, transforma suas experiências de vida em narrativas que
+                        tocam o coração de quem também escolheu trilhar novos caminhos longe de casa.
+                    </p>
+                    <p class="author-bio reveal">
+                        Seu primeiro livro, <em>Adaptando-se ao Novo</em>, nasce do desejo de
+                        acolher e orientar aqueles que enfrentam os desafios da adaptação a uma
+                        nova cultura, um novo idioma e uma nova vida.
+                    </p>
+                </div>
+                <div class="author-photo reveal">
+                    <img src="assets/images/autora.jpg" alt="Esthefany Ribeiro">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-content">
+                <p class="section-label reveal">Contato</p>
+                <h2 class="contact-title reveal">Vamos Conversar</h2>
+                <div class="contact-divider reveal"></div>
+                <p class="contact-text reveal">
+                    Para parcerias, entrevistas, eventos ou apenas para trocar uma ideia.
+                </p>
+                <a href="mailto:contato@esthefanyribeiro.com" class="contact-email reveal">contato@esthefanyribeiro.com</a>
+                <div class="contact-social reveal">
+                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Esthefany Ribeiro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
     <script src="js/main.js"></script>
 </body>
 </html>
