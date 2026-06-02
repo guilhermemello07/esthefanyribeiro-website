@@ -13,6 +13,7 @@
     --color-white: #ffffff;
     --color-border: #e2e0db;
 
+    --font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
     --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -193,57 +194,99 @@ a {
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 900px;
 }
 
-.hero-subtitle {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 24px;
-}
-
+/* Title echoing the book cover: ADAPTANDO-SE / ao / NOVO */
 .hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    font-weight: 400;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.12em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
     color: var(--color-dark);
-    margin-bottom: 32px;
 }
 
-.hero-line {
-    width: 60px;
+.hero-title-top {
+    font-size: clamp(1.9rem, 6.5vw, 4.2rem);
+    letter-spacing: 0.06em;
+}
+
+.hero-title-mid {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 3vw, 26px);
+    font-size: clamp(0.8rem, 2.4vw, 1.25rem);
+    letter-spacing: 0.32em;
+    color: var(--color-text-light);
+}
+
+.hero-title-mid::before,
+.hero-title-mid::after {
+    content: "";
+    width: clamp(28px, 8vw, 72px);
     height: 1px;
     background: var(--color-accent);
-    margin: 0 auto 32px;
 }
 
-.hero-tagline {
-    font-size: 1.1rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--color-text-light);
-    margin-bottom: 48px;
+.hero-title-bottom {
+    font-size: clamp(3.4rem, 13vw, 7.5rem);
+    letter-spacing: 0.04em;
 }
 
-.hero-cta {
-    display: inline-block;
-    font-size: 0.8rem;
+/* "Por Esthefany Ribeiro" — small, bottom-left */
+.hero-author {
+    position: absolute;
+    left: clamp(24px, 5vw, 64px);
+    bottom: clamp(28px, 5vw, 52px);
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--color-dark);
-    border-bottom: 1px solid var(--color-accent);
-    padding-bottom: 4px;
-    transition: color 0.3s ease, border-color 0.3s ease;
+    color: var(--color-accent);
 }
 
-.hero-cta:hover {
-    color: var(--color-accent);
+/* Animated scroll-down indicator (replaces the CTA) */
+.hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(24px, 4vw, 40px);
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+}
+
+.hero-scroll-chevron {
+    width: 12px;
+    height: 12px;
+    border-right: 1.5px solid var(--color-accent);
+    border-bottom: 1.5px solid var(--color-accent);
+    transform: rotate(45deg);
+    animation: heroScroll 1.8s var(--ease-in-out) infinite;
+}
+
+.hero-scroll-chevron:nth-child(2) {
+    animation-delay: 0.18s;
+}
+
+@keyframes heroScroll {
+    0% { opacity: 0; transform: rotate(45deg) translate(-3px, -3px); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: rotate(45deg) translate(3px, 3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-scroll-chevron { animation: none; opacity: 0.8; }
 }
 
 /* ---- Section Shared ---- */
@@ -260,94 +303,124 @@ a {
 /* ---- Book Section ---- */
 
 .book {
-    padding: 140px 0;
     background: var(--color-white);
 }
 
-.book-grid {
+.book-scroll {
+    position: relative;
+}
+
+.book-stage {
+    padding: 130px 0;
+}
+
+.book-stage-inner {
+    container-type: inline-size;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: clamp(40px, 6vw, 90px);
     align-items: center;
 }
 
-.book-cover img {
-    max-width: 380px;
+.book-cover-anim {
+    margin: 0;
+}
+
+.book-cover-anim img {
+    display: block;
+    width: auto;
+    max-width: 360px;
+    height: auto;
     margin: 0 auto;
     border-radius: 4px;
     box-shadow:
         0 30px 60px rgba(26, 26, 46, 0.12),
         0 10px 20px rgba(26, 26, 46, 0.08);
-    transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
-}
-
-.book-cover img:hover {
-    transform: translateY(-8px);
-    box-shadow:
-        0 40px 80px rgba(26, 26, 46, 0.16),
-        0 15px 30px rgba(26, 26, 46, 0.1);
-}
-
-.book-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: var(--color-dark);
-    margin-bottom: 12px;
-}
-
-.book-subtitle {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--color-text-light);
-    margin-bottom: 24px;
-}
-
-.book-divider {
-    width: 50px;
-    height: 1px;
-    background: var(--color-accent);
-    margin-bottom: 24px;
 }
 
 .book-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 300;
     line-height: 1.8;
     color: var(--color-text-light);
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+}
+
+.book-description:first-of-type {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--color-text);
 }
 
 .book-description:last-of-type {
-    margin-bottom: 36px;
-}
-
-.book-format {
     margin-bottom: 32px;
-}
-
-.book-format:last-child {
-    margin-bottom: 0;
-}
-
-.format-title {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-text-light);
-    margin-bottom: 14px;
 }
 
 .book-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+}
+
+/* Keyframes for the desktop pin-and-scrub */
+@keyframes bookToLeft {
+    from { transform: translateX(26cqw) scale(1.12); }
+    to   { transform: translateX(0) scale(0.96); }
+}
+
+@keyframes bookTextIn {
+    from { opacity: 0; transform: translateX(48px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Desktop/tablet enhancement: pin the stage and scrub the book to the left
+   while the text fades in on the right. Progressive enhancement — browsers
+   without scroll-driven animations (e.g. Firefox stable) keep the static
+   two-column layout above. Skipped when the user prefers reduced motion. */
+@supports (animation-timeline: scroll()) {
+    @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+        .book-scroll {
+            height: 240vh;
+            view-timeline-name: --bookpin;
+            view-timeline-axis: block;
+        }
+
+        .book-stage {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .book-stage-inner {
+            width: 100%;
+        }
+
+        .book-cover-anim img {
+            max-width: none;
+            height: min(66vh, 560px);
+        }
+
+        .book-cover-anim {
+            animation: bookToLeft linear both;
+            animation-timeline: --bookpin;
+            animation-range: contain 0% contain 85%;
+            will-change: transform;
+        }
+
+        .book-text-anim {
+            animation: bookTextIn linear both;
+            animation-timeline: --bookpin;
+            animation-range: contain 12% contain 72%;
+            will-change: opacity, transform;
+        }
+    }
 }
 
 .btn {
@@ -389,6 +462,24 @@ a {
     color: var(--color-white);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2);
+}
+
+/* Keep the Hotmart checkout button on-theme.
+   Hotmart's hotmart-fb.min.css loads after this file and would otherwise
+   force its default green button, so we override with higher specificity. */
+.book-actions .btn-primary.hotmart-fb,
+.book-actions .btn-primary.hotmart-fb:link,
+.book-actions .btn-primary.hotmart-fb:visited {
+    background: var(--color-dark) !important;
+    background-image: none !important;
+    color: var(--color-white) !important;
+    box-shadow: none !important;
+}
+
+.book-actions .btn-primary.hotmart-fb:hover {
+    background: var(--color-accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2) !important;
 }
 
 /* ---- Author Section ---- */
@@ -531,22 +622,26 @@ a {
 /* ---- Responsive ---- */
 
 @media (max-width: 900px) {
-    .book-grid,
+    .book-stage-inner,
     .author-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 40px;
         text-align: center;
     }
 
-    .book-cover {
+    .book-stage {
+        padding: 90px 0;
+    }
+
+    /* Stacked: book on top, text below */
+    .book-cover-anim {
         order: -1;
     }
 
-    .book-cover img {
-        max-width: 280px;
+    .book-cover-anim img {
+        max-width: 260px;
     }
 
-    .book-divider,
     .author-divider {
         margin-left: auto;
         margin-right: auto;
@@ -564,7 +659,6 @@ a {
         max-width: 320px;
     }
 
-    .book,
     .author,
     .contact {
         padding: 100px 0;
@@ -601,14 +695,21 @@ a {
         display: flex;
     }
 
-    .hero-title {
-        font-size: clamp(2.8rem, 12vw, 4rem);
-    }
-
     .btn {
         padding: 14px 28px;
         width: 100%;
         justify-content: center;
+    }
+
+    /* Keep the bottom-left author clear of the centered scroll indicator */
+    .hero-author {
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        bottom: 22px;
+    }
+
+    .hero-scroll {
+        bottom: 58px;
     }
 
 }
