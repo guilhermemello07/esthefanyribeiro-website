@@ -353,15 +353,30 @@ a {
     margin-bottom: 16px;
 }
 
-.book-description:first-of-type {
-    font-size: 1.2rem;
-    line-height: 1.7;
-    font-weight: 700;
-    color: var(--color-text);
-}
-
 .book-description:last-of-type {
     margin-bottom: 32px;
+}
+
+/* The hero question over the section (uses the section-1 display font) */
+.book-question {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 5vw, 2.3rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    color: var(--color-dark);
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 52px;
+}
+
+.book-question::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 1px;
+    background: var(--color-accent);
+    margin: 22px auto 0;
 }
 
 .book-actions {
@@ -372,7 +387,7 @@ a {
 
 /* Keyframes for the desktop pin-and-scrub */
 @keyframes bookToLeft {
-    from { transform: translateX(26cqw) scale(1.12); }
+    from { transform: translateX(30.5cqw) scale(1.1); }
     to   { transform: translateX(0) scale(0.96); }
 }
 
@@ -398,18 +413,39 @@ a {
             top: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 0;
-            overflow: hidden;
+            gap: clamp(16px, 3.5vh, 40px);
+            padding: 5vh 0;
+        }
+
+        /* Hero question stays pinned at the top-centre of the section */
+        .book-question {
+            margin: 0;
+            max-width: 820px;
+            font-size: clamp(1.5rem, 2.6vw, 2.2rem);
         }
 
         .book-stage-inner {
             width: 100%;
+            grid-template-columns: 0.82fr 1.18fr;
+            gap: clamp(32px, 4vw, 64px);
         }
 
         .book-cover-anim img {
             max-width: none;
-            height: min(66vh, 560px);
+            height: min(52vh, 440px);
+        }
+
+        .book-description {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .book-description:last-of-type {
+            margin-bottom: 22px;
         }
 
         .book-cover-anim {
@@ -469,22 +505,105 @@ a {
     box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2);
 }
 
-/* Keep the Hotmart checkout button on-theme.
-   Hotmart's hotmart-fb.min.css loads after this file and would otherwise
-   force its default green button, so we override with higher specificity. */
-.book-actions .btn-primary.hotmart-fb,
-.book-actions .btn-primary.hotmart-fb:link,
-.book-actions .btn-primary.hotmart-fb:visited {
-    background: var(--color-dark) !important;
-    background-image: none !important;
-    color: var(--color-white) !important;
-    box-shadow: none !important;
+/* Hotmart checkout buttons — on-theme, rounded, with a navy/gold pulse.
+   Used in three places (book, features, author), all same action + design.
+   Hotmart's hotmart-fb.min.css does NOT style the trigger button's background,
+   so no !important is needed here — which also lets the pulse animation drive
+   the background colour (an !important would otherwise block the animation). */
+.btn-primary.hotmart-fb,
+.btn-primary.hotmart-fb:link,
+.btn-primary.hotmart-fb:visited {
+    background-color: var(--color-dark);
+    background-image: none;
+    color: var(--color-white);
+    border-radius: 8px;
+    animation: btnPulse 2.4s var(--ease-in-out) infinite;
 }
 
-.book-actions .btn-primary.hotmart-fb:hover {
-    background: var(--color-accent) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2) !important;
+/* Pulse forever between the button's own navy and gold, with a slight scale */
+@keyframes btnPulse {
+    0%, 100% {
+        background-color: var(--color-dark);
+        transform: scale(1);
+        box-shadow: 0 6px 18px rgba(26, 26, 46, 0.18);
+    }
+    50% {
+        background-color: var(--color-accent);
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(184, 134, 11, 0.35);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary.hotmart-fb {
+        animation: none;
+    }
+}
+
+/* ---- What You'll Find Section ---- */
+
+.features {
+    padding: 140px 0;
+    background: var(--color-bg);
+}
+
+.features-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--color-dark);
+    margin-bottom: 22px;
+}
+
+.features-divider {
+    width: 50px;
+    height: 1px;
+    background: var(--color-accent);
+    margin: 0 auto 56px;
+}
+
+.features-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 24px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-dark);
+    border-radius: 8px;
+    transition: transform 0.3s var(--ease-out),
+        box-shadow 0.3s var(--ease-out),
+        border-color 0.3s var(--ease-out);
+}
+
+.feature-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+    box-shadow: 0 10px 24px rgba(26, 26, 46, 0.08);
+}
+
+.feature-star {
+    flex-shrink: 0;
+    color: var(--color-accent);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.feature-text {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--color-text);
 }
 
 /* ---- Author Section ---- */
@@ -497,8 +616,34 @@ a {
 .author-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    grid-template-areas:
+        "head photo"
+        "bio  photo";
+    column-gap: 80px;
     align-items: center;
+}
+
+/* Desktop: title + bio stacked in the left column, photo on the right.
+   head hugs the bottom of its row and bio the top of its, so the text
+   reads as one block centred beside the photo. */
+.author-head {
+    grid-area: head;
+    align-self: end;
+}
+
+.author-bio-wrap {
+    grid-area: bio;
+    align-self: start;
+}
+
+.author-photo {
+    grid-area: photo;
+}
+
+.features-cta,
+.author-cta {
+    text-align: center;
+    margin-top: 56px;
 }
 
 .author-title {
@@ -532,7 +677,7 @@ a {
 
 .author-photo img {
     width: 100%;
-    max-width: 450px;
+    max-width: 340px;
     margin: 0 auto;
     aspect-ratio: 3 / 4;
     object-fit: cover;
@@ -634,6 +779,19 @@ a {
         text-align: center;
     }
 
+    /* Mobile author order: title, then photo, then text */
+    .author-grid {
+        grid-template-areas:
+            "head"
+            "photo"
+            "bio";
+    }
+
+    .author-head,
+    .author-bio-wrap {
+        align-self: auto;
+    }
+
     .book-stage {
         padding: 90px 0;
     }
@@ -656,14 +814,15 @@ a {
         justify-content: center;
     }
 
-    .author-photo {
-        order: -1;
-    }
-
     .author-photo img {
-        max-width: 320px;
+        max-width: 240px;
     }
 
+    .features-list {
+        grid-template-columns: 1fr;
+    }
+
+    .features,
     .author,
     .contact {
         padding: 100px 0;
