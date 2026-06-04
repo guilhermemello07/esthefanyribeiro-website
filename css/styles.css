@@ -385,6 +385,17 @@ a {
     flex-wrap: wrap;
 }
 
+/* Reassurance line under the main buy button (format + delivery) */
+.book-note {
+    margin-top: 14px;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--color-text-light);
+    text-align: left;
+}
+
 /* Keyframes for the desktop pin-and-scrub */
 @keyframes bookToLeft {
     from { transform: translateX(30.5cqw) scale(1.1); }
@@ -812,6 +823,10 @@ a {
 
     .book-actions {
         justify-content: center;
+    }
+
+    .book-note {
+        text-align: center;
     }
 
     .author-photo img {
